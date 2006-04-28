@@ -1,4 +1,6 @@
 com.sun.faces
+com.sun.faces.components
 com.sun.faces.el
+com.sun.faces.renderkit
 com.sun.faces.taglib.jsf_extensions
 com.sun.faces.util
