@@ -1,0 +1,132 @@
+I. Intro
+
+A. Why JSF?
+
+  1. Web apps have more reach than non-web apps.
+
+  2. JSF makes it easy to build web apps
+
+    a. markup based UI construction
+
+      - JSP
+
+      - Facelets -> XHTML or HTML
+
+    b. Large selection of off the shelf JSF components
+
+    c. Useful from the command line
+
+    d. Useful in tools
+
+B. Why AJAX?
+
+  1. Web apps have more reach, but are not as rich or easy to use as
+     rich client apps.
+
+  2. AJAX brings extends the richness, but doesn't sacrifice the reach
+     (much)
+
+C. Why JSF and AJAX?
+
+  1. Key Features
+
+    a. Flexible JSF Component model
+
+    b. Well defined Request Processing Lifecycle
+
+    c. Flexible Rendering Model
+
+  2. Concept Enablers
+
+    a. Encapsulation: hide JavaScript from page author, expose it to
+     Component Developer.
+
+    b. State Management: JSF's state management makes it easy to keep
+     server state in synch with client state.
+
+D. JSF Extensions for AJAX - Introduction
+
+  1. What is it?
+
+    a. Incremental improvement of JSF runtime to enable first class AJAX
+       support in JSF.
+
+    b. Extends the JSF lifecycle for AJAX
+
+  2. History and Current Status
+
+    a. Is an implementation of the Jacob Hookom's Avatar idea.
+
+    b. Has been evolving since November 2005
+
+    c. Still experimental.  In 0.1-SNAPSHOT status, working up to 0.1
+     release.
+  
+E. JSF Extensions for AJAX - Details
+
+  1. Entry points by Role
+
+    a. Page author: order of increasing complexity
+
+      - Use AJAX enabled components
+
+      - Use ajaxZone tag to ajax enable regions of the page
+
+      - Use provided JavaScript library to ajax enable individual
+        elements in the page
+
+    b. Component author: order of increasing complexity
+
+      - Use composite component approach with AjaxZones
+
+      - Use Provided JavaScript library
+
+      - Write your own JavaScript library that talks directly to the
+        HTTP protocol and XML application defined by JSF Extensions for
+        AJAX.
+
+   2. Entry points by layer: block diagram
+
+     AjaxZones
+     JavaScript library
+     JSF AJAX Lifecycle
+     JSF Lifecycle
+
+  Mention another slide-deck that will give more details.
+
+D. Demonstrations
+
+  1. jsf and jMaki
+
+    a. Show JSP page
+
+    b. Mention that the value attribute is used in place of the service
+       attribute
+
+    c. Mention that this component is context aware: works inside of a
+       table.
+
+    d. Mention that the jsf jMaki component is an example of a JSF
+       component that talks directly to the HTTP prototocol and XML
+       application on defined by JSF Extensions for AJAX.
+
+       Show the component.js file for this component.
+
+    e. Show the use of the Faces.Command and a small amount of
+       JavaScript to ajaxify the bp scroller component
+
+  2. JavaOne demo
+
+    a. Show how the autocomplete works
+
+    b. Show how the detail view works 
+
+    c. Show how the order entry works
+
+  3. Cardemo
+
+    a. Show how the ajaxZone works.
+
+
+
+
