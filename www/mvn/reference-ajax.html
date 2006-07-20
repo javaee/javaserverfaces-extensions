@@ -46,7 +46,7 @@
   
   
             <div class="xleft">
-        Last Published: 2006 07 19
+        Last Published: 2006 07 20
                       </div>
             <div class="xright">      <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
           |
@@ -245,15 +245,17 @@
 
 <div class="source"><pre><code>
 &lt;ANY_HTML_OR_JSF_ELEMENT 
-on|EVENT|=&quot;new Faces.Event(this, { |OPTIONS| }); return false;&quot; /&gt;
+on|EVENT|=&quot;new Faces.Event(THIS, { |OPTIONS| }); return false;&quot; /&gt;
 </code></pre></div>
 
        <p>Where <code>ANY_HTML_OR_JSF_ELEMENT</code> is any jsf
        component or HTML element from which you emit the event,
-       <code>|EVENT|</code> is any javascript event supported by that
-       element, such as <code>onmousedown</code>, <code>onclick</code>,
-       <code>onblur</code>, etc, and <code>{ |OPTIONS| }</code> is an
-       optional argument that is a JavaScript <a href="http://www.quirksmode.org/js/associative.html">associative
+       <code>THIS</code> is a JavaScript reference to the HTML element
+       given earlier, <code>|EVENT|</code> is any javascript event
+       supported by that element, such as <code>onmousedown</code>,
+       <code>onclick</code>, <code>onblur</code>, etc, and <code>{
+       |OPTIONS| }</code> is an optional argument that is a JavaScript
+       <a href="http://www.quirksmode.org/js/associative.html">associative
        array</a> supporting the following options.</p>
 
        <dl>
