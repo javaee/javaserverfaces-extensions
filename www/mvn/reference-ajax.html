@@ -46,7 +46,7 @@
   
   
             <div class="xleft">
-        Last Published: 2006 07 20
+        Last Published: 2006 07 21
                       </div>
             <div class="xright">      <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
           |
@@ -307,13 +307,22 @@ apply request values, rather than invoke application.</p>
 <dt><p>closure</p>
 </dt>
 
+<dd><p>If specified, this is a JavaScript object is kept locally and
+passed to the <code>replaceElementHook</code> and/or the
+<code>postInstallHook</code> callback functions.</p>
+</dd>
+
+<dt><p>xjson</p>
+</dt>
+
 <dd><p>If specified, this is a JavaScript associative array object that
 will be sent up to the server in the <code>X-JSON</code> header.  This
 value may be operated on by the server.  The possibly modified value
 will be returned to the client as the last argument in the
 <code>replaceElementHook</code> and/or the
-<code>postInstallHook</code>.</p>
+<code>postInstallHook</code> callback functions.</p>
 </dd>
+
 
 <dt><p>replaceElementHook</p>
 </dt>
@@ -321,7 +330,7 @@ will be returned to the client as the last argument in the
 <dd><p>The name of a globally scoped function that conforms to the following signature.</p>
 
 <pre><code>
-function replaceElement(id, content, [closure]);
+function replaceElement(id, content, [closure], [xjson]);
 </code></pre>
 
 <p>This function is called for each component that needs to be
@@ -332,7 +341,12 @@ expected to invoke any scripts that may be present in
 <code>content</code>.  The optional argument <code>closure</code> is
 whatever was passed as the <code>closure</code> option to the
 <code>Faces.Event</code> or <code>Faces.Command</code> that initiated
-the ajax request for this response.</p>
+the ajax request for this response.  The optional argument
+<code>xjson</code> is whatever was passed as the <code>xjson</code>
+option to the <code>Faces.Event</code> or <code>Faces.Command</code>
+that initiated the ajax request for this response.  The
+<code>xjson</code> agrument is passed to the server and may have been
+modified by the server.</p>
 
 </dd>
 
@@ -342,7 +356,7 @@ the ajax request for this response.</p>
 <dd><p>The name of a globally scoped function that conforms to the
 following signature.</p>
 
-<pre><code> function postReplaceHook(ajaxZone, innerHTML, [closure]);
+<pre><code> function postReplaceHook(ajaxZone, innerHTML, [closure], [xjson]);
 </code></pre>
 
 <p>This function is called after the markup replacement for each
@@ -350,7 +364,12 @@ component that needs to be re-rendered with data from this ajax
 response.  The optional argument <code>closure</code> is whatever was
 passed as the <code>closure</code> option to the
 <code>Faces.Event</code> or <code>Faces.Command</code> that initiated
-the ajax request for this response.</p>
+the ajax request for this response.  The optional argument
+<code>xjson</code> is whatever was passed as the <code>xjson</code>
+option to the <code>Faces.Event</code> or <code>Faces.Command</code>
+that initiated the ajax request for this response.  The
+<code>xjson</code> agrument is passed to the server and may have been
+modified by the server.</p>
 
 </dd>
 
@@ -388,7 +407,6 @@ the ajax request for this response.</p>
       <div class="xright">&#169;  
           2006
     
-          Sun Microsystems, Inc
           
   
 
