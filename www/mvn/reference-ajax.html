@@ -46,7 +46,7 @@
   
   
             <div class="xleft">
-        Last Published: 2006 07 21
+        Last Published: 2006 07 27
                       </div>
             <div class="xright">      <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
           |
@@ -198,9 +198,13 @@
 
   
 
+    <p>This document is a reference to the JavaScript and JSP/Facelets
+    entry points to JavaServer(TM) Faces Technology Extensions Dynamic
+    Faces (DynaFaces).</p>
+
     <a name="JSP/Facelets tags"></a><div class="section"><h2>JSP/Facelets tags</h2>
 
-
+      <p>For complete reference materials, see the <a href="ajax/tlddocs">TagLibrary Documentation</a>.</p>
 
 
 
@@ -211,6 +215,9 @@
        inside &lt;f:view&gt; yet before any usages of the AJAX
        JavaScript objects.  Subsequent occurrences of this tag in the
        page will produce no output.</p>
+
+       <p>Please see <a href="ajax/tlddocs/jsfExt/scripts.html">the tag
+       library documentation</a> for details.</p>
 
        <h4>Usage</h4>
 
@@ -227,25 +234,54 @@
 
       </div>
 
+      <a name="AjaxZone Component"></a><div class="section"><h3>AjaxZone Component</h3>
+
+      <p>Convenience component marking the regions of a page that should
+      be updated via AJAX.  When using this component, you do not need
+      to use the <code>Scripts</code> component because the zone will
+      cause the required scripts to be rendered.</p>
+
+       <p>Please see <a href="ajax/tlddocs/jsfExt/ajaxZone.html">the tag
+       library documentation</a> for details.</p>
+
+
+
+       <h4>Usage</h4>
+
+<div class="source"><pre><code>
+&lt;jsfExt:ajaxZone id=&quot;zone2&quot; interactionType=&quot;input&quot; 
+                inspectElementHook=&quot;inspectElement&quot;
+                eventType=&quot;click&quot; eventHook=&quot;extractParams&quot;
+                action=&quot;#{carstore.currentModel.updatePricing}&quot;&gt;
+  &lt;!-- JSF and HTML content goes here. --&gt;
+&lt;/jsfExt:ajaxZone&gt;
+
+</code></pre></div>
+
+      </div>
+
     </div>
     
-    <a name="JavaScript Objects"></a><div class="section"><h2>JavaScript Objects</h2>
-    <a name="JavaScript Objects"></a>
+    <a name="JavaScript Functions"></a><div class="section"><h2>JavaScript Functions</h2>
 
 
 
-      <a name="Faces.Event"></a><div class="section"><h3>Faces.Event</h3>
+      <p>This section lists the JavaScript functions and classes exposed
+      by the DynaFaces JavaScript library.</p>
 
-        <p>This class extends the <a href="http://www.sergiopereira.com/articles/prototype.js.html#Ajax.Request">Ajax.Request</a>
-        class from the <a href="http://www.sitepoint.com/article/painless-javascript-prototype">Prototype
-        JavaScript Library</a> and adds a bit of functionality specific
-        to JSF.</p>
+      <a name="DynaFaces.fireEvent"></a><div class="section"><h3>DynaFaces.fireEvent</h3>
+
+        <p>When invoked, causes an AJAX request with the specified
+        options to be sent to the Faces server immediately.  The
+        response to this request comes in the form of an XML document
+        that is parsed by the DynaFaces JavaScript library and used to
+        update the DOM of the current view.</p>
 
         <h4>Usage</h4>
 
 <div class="source"><pre><code>
 &lt;ANY_HTML_OR_JSF_ELEMENT 
-on|EVENT|=&quot;new Faces.Event(THIS, { |OPTIONS| }); return false;&quot; /&gt;
+on|EVENT|=&quot;DynaFaces.fireEvent(THIS, { |OPTIONS| });&quot; /&gt;
 </code></pre></div>
 
        <p>Where <code>ANY_HTML_OR_JSF_ELEMENT</code> is any jsf
@@ -259,6 +295,13 @@ on|EVENT|=&quot;new Faces.Event(THIS, { |OPTIONS| }); return false;&quot; /&gt;
        array</a> supporting the following options.</p>
 
        <dl>
+
+<dt><p>asynchronous</p>
+</dt>
+
+<dd>boolean value.  True by default.  If false the ajax request will be
+made asynchronously.
+</dd>
 
         <dt><p>execute</p></dt>
 
@@ -340,13 +383,14 @@ DOM element referenced by the <code>id</code> argument.  The function is
 expected to invoke any scripts that may be present in
 <code>content</code>.  The optional argument <code>closure</code> is
 whatever was passed as the <code>closure</code> option to the
-<code>Faces.Event</code> or <code>Faces.Command</code> that initiated
-the ajax request for this response.  The optional argument
-<code>xjson</code> is whatever was passed as the <code>xjson</code>
-option to the <code>Faces.Event</code> or <code>Faces.Command</code>
-that initiated the ajax request for this response.  The
-<code>xjson</code> agrument is passed to the server and may have been
-modified by the server.</p>
+<code>DynaFaces.fireEvent</code> or
+<code>DynaFaces.installDeferredEvent</code> that initiated the ajax
+request for this response.  The optional argument <code>xjson</code> is
+whatever was passed as the <code>xjson</code> option to the
+<code>DynaFaces.fireEvent</code> or <code>DynaFaces.installDeferredEvent</code> that
+initiated the ajax request for this response.  The <code>xjson</code>
+agrument is passed to the server and may have been modified by the
+server.</p>
 
 </dd>
 
@@ -363,13 +407,14 @@ following signature.</p>
 component that needs to be re-rendered with data from this ajax
 response.  The optional argument <code>closure</code> is whatever was
 passed as the <code>closure</code> option to the
-<code>Faces.Event</code> or <code>Faces.Command</code> that initiated
-the ajax request for this response.  The optional argument
-<code>xjson</code> is whatever was passed as the <code>xjson</code>
-option to the <code>Faces.Event</code> or <code>Faces.Command</code>
-that initiated the ajax request for this response.  The
-<code>xjson</code> agrument is passed to the server and may have been
-modified by the server.</p>
+<code>DynaFaces.fireEvent</code> or
+<code>DynaFaces.installDeferredEvent</code> that initiated the ajax
+request for this response.  The optional argument <code>xjson</code> is
+whatever was passed as the <code>xjson</code> option to the
+<code>DynaFaces.fireEvent</code> or
+<code>DynaFaces.installDeferredEvent</code> that initiated the ajax
+request for this response.  The <code>xjson</code> agrument is passed to
+the server and may have been modified by the server.</p>
 
 </dd>
 
@@ -378,17 +423,46 @@ modified by the server.</p>
 
       </div>
 
-      <a name="Faces.Command"></a><div class="section"><h3>Faces.Command</h3>
+      <a name="DynaFaces.installDeferredEvent"></a><div class="section"><h3>DynaFaces.installDeferredEvent</h3>
 
-       <p>This class extends <code>Faces.Event</code> and uses the
-       Prototype <a href="http://www.sergiopereira.com/articles/prototype.js.html#Reference">Event.observe</a>
-       feature to cause a <code>Faces.Event</code> to be emitted from a
-       specific element in the DOM.</p>
+       <p>This function extends the functionality of
+       <code>DynaFaces.fireEvent</code> and uses the Prototype <a href="http://www.sergiopereira.com/articles/prototype.js.html#Reference">Event.observe</a>
+       feature to cause a <code>DynaFaces.fireEvent</code> call to be
+       emitted from a specific element in the DOM when the specified
+       JavaScript event occurs.  The options supported are exactly the
+       same as in <code>DynaFaces.fireEvent</code>.</p>
 
        <h4>Usage</h4>
 
-<div class="source"><pre>PENDING(jhook) please provide an easy to follow example of this.
-</pre></div>
+<pre><code>
+DynaFaces.installDeferredEvent(ELEMENT, EVENT_STRING_LITERAL, { |OPTIONS| });
+</code></pre>
+
+<p>Where <code>ELEMENT</code> is a JavaScript reference to a DOM element
+that is to be instrumented with AJAX behavior.
+<code>EVENT_STRING_LITERAL</code> is a string, with or without the &quot;on&quot;
+prefix, that must be a JavaScript event type.  Examples include,
+&quot;click&quot;, &quot;blur&quot;, &quot;mouseover&quot;, etc.  <code>|OPTIONS|</code> is as
+specified above, in the section <a href="#DynaFaces.fireEvent">DynaFaces.fireEvent</a>.</p>
+
+<div class="source"><pre><pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+  // Assume there is code to populate the associative array
+  // <i>elements</i> with elements that should be AJAXified.  
+
+  options = new Object();
+
+  // Assume there is code to populate the options.  The set of
+  // supported options is described previously in the section
+  // <a href="#DynaFaces.fireEvent">DynaFaces.fireEvent</a>.
+
+  var element;
+  for (var e in elements) {
+    element = elements[e];
+    DynaFaces.installDeferredEvent(e, &quot;click&quot;, options);
+  }
+</pre></pre></div>
 
       </div>
 
