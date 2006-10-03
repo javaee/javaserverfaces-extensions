@@ -1,0 +1,198 @@
+Abstract:
+
+This presentation will demonstrate how JSF and AJAX are perfect
+together. We begin with an insight into the design heritage of JSF, and
+how that heritage puts JSF in good stead to be productive in the AJAX
+world. Building on that foundation we dive into the code from the page
+author and component developer's perspective. We close with a look to
+the future and show how JSF is being used for mobile and disconnected
+applications.
+
+I. Goals of presentation
+
+  A. Walk away thinking that using Ajax with JSF is better than using
+     Ajax alone, or using it with some other server side solution.
+
+  B. Know one way of using Ajax with JSF.
+
+  C. Know how to evaluate a JSF + Ajax solution for your own use
+
+     1. Learning curve
+
+     2. Knowledge of JavaScript required for productive use
+
+     3. Ease of doing partial page update
+
+     4. Expose JavaScript for advanced users
+
+II. Terms
+
+   "Enterprise Grade"
+
+      Robust, Scalable, Well Tested, Industry Proven
+
+      Easy to use, suited to appropriate skillset of your developers
+
+      Concept scalability
+
+    Ajax
+
+      In a web application, using asynchronous network transactions to a
+      server to dynamically update the appearance and behavior of the
+      view shown to the user in the browser.
+
+    DRY
+
+     Don't repeat yourself
+
+    DRO
+
+      Don't repeat others
+	
+III. Why JSF and Ajax?
+
+  A. Web Application Musts
+
+  B. The case for JSF + Ajax
+
+    1. Ways to use JSF with Ajax, decreasing developer complexity
+
+      a. Naked Ajax
+
+	Pros
+
+	  You'll gain a deep understanding of Ajax techniques
+
+	Cons
+
+	  Have to handle all XmlHttpRequest interactions yourself
+
+	  Have to handle any cross browser quirks
+
+	  You'll end up writing a framework to do it for you anyway
+
+	  Why bother?
+
+      b. Using a JavaScript Framework
+
+	Pros
+
+	  Many of them out there
+
+	    Dojo
+
+	    DWR
+
+	    Scriptaculous
+
+	  Some are very powerful
+
+	Cons
+
+	  Still have to solve problems of UI state management, conversion,
+	  validation, navigation, etc.
+
+      c. Using JSF + DynaFaces
+
+	Pros
+
+	  No knowledge JavaScript required
+
+	  Can use JavaScript to do more advanced things
+
+	  Only JSF + Ajax solution that correctly handles context sensitive
+	  ajax.
+
+	Cons
+
+	  Currently only implemented for JSF 1.2
+
+	  Still in Early Access: needs more testing
+
+      d. Using Ajax Enabled JSF UIComponents
+
+	Pros
+
+	  No new knowledge required
+
+	  Some nice components out there, including for JSF 1.1
+
+	Cons
+
+	  If you can't find a component that does what you want, you'd have
+	  to write one, and in that case, it's best to use DynaFaces.
+
+Is Ajax different enough from existing web application UI practices that
+it warrants a completely differnt approach?
+
+  No.  In spite of how much money Ben Galbraith and Dion Almaer are
+  making off of teaching people about Ajax, they still recommend that
+  using a framework to do the dirty work for you is the best way to go.
+
+  C. Design heritage of JSF
+
+    1. OO Practices employed
+
+    2. Design Patterns used
+
+  D. High Level Features of JSF that are Useful for Ajax
+
+    1. Component model designed for the web
+
+      a. Can handle multi-event transactions
+
+      b. Optimized for delivery of Markup
+
+    2. Well defined request processing lifecycle
+
+    3. Support for Context Aware Ajax interactions on JSF components
+
+  E. Problems with Ajax and how JSF Fixes them
+
+    1. Cross browser differences
+
+    2. Internationalization
+
+    3. Script management and versioning
+
+    4. "too chatty" XmlHttpRequest usage
+
+    5. Lack of complete set of HTML entities in xml, pain when sending
+    markup back over HTTP.  XML only has
+
+     &amp; &lt; &gt; &quot; &apos; JSF ResponseWriter can automatically
+     translate these into their Unicode counterparts. 
+
+    6. Component/Renderer model allows encapsulation of innerHTML
+    manipulation, if you decide to use it. 
+
+    7. Still have to do server side conversion, validation, model update.
+
+IV. DynaFaces
+
+  A. Basic idea
+
+  B. Usage Patterns
+ 
+  C. Demos
+
+  D. More Info
+
+V. Summary
+
+  JSF + Ajax makes sense
+
+  Know how to evaluate a JSF + Ajax solution for your own use
+
+     1. Learning curve
+
+     2. Knowledge of JavaScript required for productive use
+
+     3. Ease of doing partial page update
+
+     4. Expose JavaScript for advanced users
+
+
+Single page interface versus multi page interface
+
+
