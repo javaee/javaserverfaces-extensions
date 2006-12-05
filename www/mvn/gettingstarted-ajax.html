@@ -236,10 +236,10 @@ following:</p>
 	Tutorial</a>, which is free to download or read online.
 	If you prefer a hardcopy book on the subject, try 
      <a href="http://purl.oclc.org/NET/jsfbook/">JavaServer Faces: The
-    Complete Reference</a>, which is available in book stores now</li>
+    Complete Reference</a>, which is available in book stores now.</li>
     <li>Knowledge of Maven 2, if you want to use the automatic
-    build infrastructure.  <a href="http://maven.apache.org/">Consult out
-    the maven site</a> for more information</li>
+    build infrastructure.  <a href="http://maven.apache.org/">Consult 
+    the maven site</a> for more information.</li>
     </ul>
 
     </div>
@@ -251,21 +251,21 @@ following:</p>
 
     <ol type="1">
 
-	  <li>download and install a container that runs JavaServer Faces technology, version 1.2, such as the
-        <a href="http://java.sun.com/javaee/downloads/">Java EE SDK</a>
+	  <li>Download and install a container that runs JavaServer Faces technology, version 1.2, such as the
+        <a href="http://java.sun.com/javaee/downloads/">Java EE SDK</a>.
 	 </li>
 
-	  <li>do one of two things:
+	  <li>Do one of two things:
 		<ul>
-			<li>download and unpack a binary distribution of Dynamic Faces, which you can get
+			<li>Download and unpack a binary distribution of Dynamic Faces, which you can get
 	 by clicking the &quot;Download&quot; link on the <a href="/">Dynamic Faces main page</a>.
          </li>
-		<li>use Subversion and Maven to checkout and build Dynamic Faces from source.  You 
+		<li>Use Subversion and Maven to check out and build Dynamic Faces from source.  You 
 	can find instructions for checking out the code <a href="https://jsf-extensions.dev.java.net/servlets/ProjectSource">here</a>. 
       To build the code after you've checked it out, see the FAQ question, 
       <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq#How_do_I_Build_It_">How do I build it?</a>.  
       Note that section <a href="#Adding_Dynamic_Faces_to_your_JavaServer_Faces_Application">Adding Dynamic Faces to your JavaServer Faces Application</a> 
-      assumes that you are checking out and building Dynamic Faces from source</li>
+      assumes that you are checking out and building Dynamic Faces from source.</li>
 		</ul>
 
 
@@ -284,7 +284,7 @@ environment&quot;.</p>
 
 <p>If you are not adding Dynamic Faces capabilities to an existing
 JavaServer Faces application but are instead creating a new application,
-it's easier to start with the blank application provided both in the
+you'll find it's easier to start with the blank application provided both in the
 binary distribution and the source repository because it already has all
 the configurations set. </p>
 
@@ -293,28 +293,28 @@ in the &lt;DIST&gt; directory.  To start using the blank application, follow the
 
 	<ol type="1">
           
-	  <li>do one of the following to start coding with the blank application:
-		<ol type="1">
-			<li>if you are using Maven, go to the 
+	  <li>Do one of the following to start coding with the blank application:
+		<ul>
+			<li>If you are using Maven, go to the 
 		<code>&lt;DIST&gt;/samples/blank-jsp</code> directory.
 	  This is a Maven module pre-configured to build your app</li>
-			<li>if you are using the binary distribution instead,
+			<li>If you are using the binary distribution,
 	  unpack the pre-built WAR file, called
 	  <code>&lt;DIST&gt;/samples/blank-jsp/target/dynafaces-jsp-blank.war</code>,
 	  into a new directory and do your editing in place. </li>
-		</ol></li>
-	  <li>do build the application, do one of the following:
-		<ol type="1">
-			<li>if you are using Maven, build the example by running the following command
-		inside the blank-jsp directory, assuming you have added Maven to your path:
+		</ul></li>
+	  <li>Build the application by doing one of the following:
+		<ul>
+			<li>If you are using Maven, build the example by running the following command
+		inside the <code>blank-jsp</code> directory, assuming you have added Maven to your path:
 			<pre>
 			mvn
 			</pre>
 		     </li>
-	  		<li>if you are using the binary distribution, use the jar command to build the 
-		directory into a WAR file</li>
-		</ol></li>
-	<li>deploy the WAR file that you built to your server</li>
+	  		<li>If you are using the binary distribution, use the <code>jar</code> command to build the 
+		directory into a WAR file.</li>
+		</ul></li>
+	<li>Deploy the WAR file that you built to your server.</li>
 	</ol>
 	  Keep in mind that the rest of this guide assumes that you're using Maven.
 
@@ -334,14 +334,14 @@ in the &lt;DIST&gt; directory and follow these directions:</p>
 
 	<ol type="1">
 
-	  <li>set up the web.xml file.
+	  <li>set up the <code>web.xml</code> file.
 
 In Maven, the <code>web.xml</code> file is located at
 <code>src/main/webapp/WEB-INF/web.xml</code> by default.  That means
 it's located at
 <code>&lt;DIST&gt;/samples/blank-jsp/src/main/webapp/WEB-INF/web.xml</code>
 on your disk.  Open the file and look at the
-<code>&lt;servlet&gt;</code> XML element.
+<code>&lt;servlet&gt;</code> XML element:
 
 <pre><code>
     &lt;servlet&gt;
@@ -356,12 +356,12 @@ on your disk.  Open the file and look at the
 
 </code></pre>
 
-This is the only special configuration you need in your web.xml to
-use DynaFaces.  No filters, no extra servlets, no mess.
+This is the only special configuration you need in your <code>web.xml</code> to
+use Dynamic Faces.  No filters, no extra servlets, no mess.
 
          </p></li>
 
-	  <li>bundle the dependent jars in the <code>WEB-INF/lib</code> directory of your application.
+	  <li>Bundle the dependent JAR files in the <code>WEB-INF/lib</code> directory of your application.
 
 
 Go to the <code>&lt;DIST&gt;/samples/blank-jsp/target/</code>directory
@@ -450,10 +450,12 @@ Perform the required configuration steps described in the <a href="#Application 
 </ol>
 
 <p>Once you've finished the preceding tasks, you're ready to add any
-Dynamic Faces functionality to your application.  The
-<code>greeting.jsp</code> page of the Guess Number application uses
-Dynamic Faces to Ajax-enable the submission of the user's guess.  Try
-running the live demo of <a href="http://sunapp1.whardy.com:8090/jsf-dynafaces-getting-started/">Guess
+Dynamic Faces functionality to your application.  The rest of this section
+describes how the Guess Number application uses Dynamic Faces.</p>
+
+<p>The <code>greeting.jsp</code> page of the Guess Number application uses
+Dynamic Faces to Ajax-enable the submission of the user's guess.
+Try running the live demo of <a href="http://sunapp1.whardy.com:8090/jsf-dynafaces-getting-started/">Guess
 Number</a> and you'll see that the additional Ajax functionality speeds
 up the submission of the form.  Notice that the &quot;spinner&quot; in
 the corner of the browser doesn't spin waiting for the page to refresh.
