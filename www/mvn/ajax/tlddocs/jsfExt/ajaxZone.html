@@ -74,7 +74,17 @@
 <td>id</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><p>JSF Component Id for this zone.</p></td>
 </tr>
 <tr valign="top">
+<td>binding</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>com.sun.faces.extensions.avatar.components.AjaxZone</code>)
+                    </td><td>A ValueExpression that resolves to the UIComponent that corresponds to this tag. This binding allows the Java bean that contains the UIComponent to manipulate the UIComponent, its properties, and its children.</td>
+</tr>
+<tr valign="top">
 <td>style</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><p>Convey CSS style information to the renderer</p></td>
+</tr>
+<tr valign="top">
+<td>styleClass</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
 <br>(<i>must evaluate to </i><code>java.lang.String</code>)
                     </td><td><p>Convey CSS style information to the renderer</p></td>
 </tr>
@@ -117,6 +127,21 @@
 <td>getCallbackData</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
 <br>(<i>must evaluate to </i><code>java.lang.String</code>)
                     </td><td><p>This optional attribute names a function to be called to provide a closure argument that will be passed to the ajax request and made available to the ajax response in the <code>replaceElement</code> or <code>postReplace </code> functions. The function must conform to the following signature. </p> <pre><code> function getClosure(ajaxZone, element); </code></pre> <p>The function must return a JavaScript Object.</p></td>
+</tr>
+<tr valign="top">
+<td>rendered</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>Flag indicating whether or not this component should be rendered (during Render Response Phase), or processed on any subsequent form submit. The default value for this property is true.</td>
+</tr>
+<tr valign="top">
+<td>execute</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>Comma separated list of client ids for which the "execute" portion of the request processing lifecycle will be run when an Ajax transaction originates from within this zone. If not specified, the "execute" portion of the request processing lifecycle will be run on this zone only.</td>
+</tr>
+<tr valign="top">
+<td>render</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>Comma separated list of client ids for which the "render" portion of the request processing lifecycle will be run when an Ajax transaction originates from within this zone. If not specified, the "render" portion of the request processing lifecycle will be run on this zone only.</td>
 </tr>
 </table>
 <br>
