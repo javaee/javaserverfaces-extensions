@@ -109,4 +109,27 @@ var info = {
 _uacct = "UA-1273798-1";
 urchinTracker();
 </script>
+<!-- This script makes jsf-extensions a sub-project of JSF -->
+<script type="text/javascript">
+    /*
+    if(zones[3] && zones[3].title=="JSF" && !zones[3].zones) {
+        // zones[3].expanded=true; // if submenu of JSF should be visible
+        zones[3].zones=[{title: 'JSFTemplating',href:'http://jsftemplating.dev.java.net/'}];
+    }
+    */
+
+    _uacct = "UA-822917-1";
+    function myonload() {
+        // Track stuff
+        urchinTracker();
+
+        // Do old onload
+        if (document.oldonload) {
+            document.oldonload();
+        }
+    }
+    document.oldonload = window.onload;
+    window.onload = myonload;
+</script>
+
 -->
