@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>JavaServer Faces Technology Extensions - 
+    JSF Extensions Zero Deployment Time</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://java.sun.com/" id="bannerLeft">
+    
+                                            <img src="images/corpweb-power.gif" alt="" />
+    
+            </a>
+                        <a href="http://java.sun.com/javaee/downloads/" id="bannerRight">
+    
+                                            <img src="images/javaeesdkdownload.gif" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: 2006 12 05
+                      </div>
+            <div class="xright">      <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
+          |
+          <a href="http://java.sun.com/javaee/javaserverfaces/">JSF</a>
+          |
+          <a href="http://javaserverfaces.dev.java.net/">Sun JSF</a>
+          |
+          <a href="http://java.sun.com/javaee/downloads/index.jsp">Java EE</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>JSF Extensions</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="index.html">home</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectMembershipRequest">Join Project</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/WatchProject">Watch Project</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectDocumentList">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectIssues">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/source/browse/jsf-extensions/">Version Control - SCM</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq#How_do_I_Build_It_">Building</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://wiki.java.net/bin/view/Projects/Jsf-extensions">Wiki</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectNewsList">Announcements</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectMailingListList">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="slides.html">Slides and Screencasts</a>
+        </li>
+          </ul>
+          <h5>Runtime Features</h5>
+        <ul>
+              
+          
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="expanded">
+              <a href="features-ajax.html">Ajax</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="features-ajax.html">Overview</a>
+        </li>
+                  
+    <li class="none">
+              <a href="gettingstarted-ajax.html">Getting Started</a>
+        </li>
+                  
+    <li class="none">
+              <a href="reference-ajax.html">Reference</a>
+        </li>
+                  
+    <li class="none">
+              <a href="ajax/apidocs/index.html">JavaDoc</a>
+        </li>
+                  
+    <li class="none">
+              <a href="ajax/tlddocs/index.html">TagLibraryDoc</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="features-flash.html">Flash</a>
+        </li>
+              
+    <li class="none">
+              <strong>Zero Deployment Time</strong>
+        </li>
+          </ul>
+          <h5>Test Time Features</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="features-test.html">Test</a>
+        </li>
+          </ul>
+          <h5>Project Documentation</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="project-info.html">Project Information</a>
+              </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        
+
+  
+
+  
+
+    <a name="Warning"></a><div class="section"><h2>Warning</h2>
+
+     <p>The presence of the <code>jsf-extensions-dev-time.jar</code> in
+     your <code>WEB-INF/lib</code> directory opens up a big security
+     hole in your application, in the name of ease of development.  Do
+     not deploy your application into production with this jar in your
+     <code>WEB-INF/lib</code>.
+     </p>
+
+    </div>
+
+    <a name="Usage"></a><div class="section"><h2>Usage</h2>
+
+     <p>One oft cited complaint about Java Web Applications is the slow
+     and laborious <a href="http://www.theserverside.com/news/thread.tss?thread_id=35538">deployment
+     step</a>.  This step seriously undermines the ability to get into a
+     <a href="http://web.ionsys.com/~remedy/FLOW%20%20.htm">flow
+     state</a> and is generally a major buzz kill.  The absense of a
+     deployment step is one reason why people like Ruby on Rails so
+     much.</p>
+
+     <p>JSF-Extensions Design time brings good news for flow-impaired
+     Java Web application Developers: the JMX PhaseListener.</p>
+
+       <a name="HowTo"></a><div class="section"><h3>HowTo</h3>
+
+         <p>Here's how to use this feature in to iteratively develop a
+         JSF 1.2 application deployed via a &quot;deploydir&quot;-style deployment
+         on a JMX enabled Java EE container, such as <a href="http://java.sun.com/javaee/downloads/">the Java EE
+         SDK</a>.</p>
+
+	<ol type="1">
+
+	  <li>Download the <a href="http://jsf-extensions.dev.java.net/servlets/ProjectDocumentList">jsf-extensions
+	  binary bundle</a> from the &quot;releases&quot; folder.  </li>
+
+	  <li>Unpack the binary, take the
+	  <code>jsf-extensions-dev-time-&lt;VERSION&gt;.jar</code> 
+	  and drop it into your JSF application's
+	  <code>WEB-INF/lib</code> directory.</li>
+
+	  <li>Deploy the app to your container using the &quot;deploydir&quot;
+	  feature.  In <a href="http://java.sun.com/javaee/downloads/">Java EE 5 SDK</a>
+	  or <a href="https://glassfish.dev.java.net/">glassfish</a>
+	  this can be done using the command
+
+          <blockquote>
+           ./asadmin deploydir --user admin --passwordfile &lt;PATH_TO&gt;/.javaee-passwordfile --contextroot &lt;CONTEXT_ROOT&gt; &lt;ABSOLUTE_PATH_TO_EXPLODED_WAR_DIRECTORY&gt;
+          </blockquote>
+
+          <p>For example, this command deploys the cardemo:</p>
+
+          <blockquote>
+           ./asadmin deploydir --user admin --passwordfile /Users/edburns/.javaee-passwordfile --contextroot jsf-ajax-cardemo /Users/edburns/Projects/J2EE/workareas/jsf-extensions-trunk/code/run-time/samples/cardemo/target/jsf-ajax-cardemo
+          </blockquote>
+
+
+           </li>
+
+
+	  <li>Look at your <code>WEB-INF/web.xml</code> and note the
+	  <code>url-mapping</code> for the <code>FacesServlet</code> in
+	  your application.  You already have to have such a mapping if
+	  you're using JSF in the first place.
+
+          <p>For prefixed mapped applications, any HTTP request to the
+          following URL will cause your application to be immediately
+          stopped and restarted via JMX.</p>
+
+
+          <blockquote>
+            <code>http://&lt;HOST&gt;[:&lt;PORT&gt;]/&lt;CONTEXT_ROOT&gt;/&lt;FACES_SERVLET_MAPPING&gt;/restart?password=adminadmin</code>
+          </blockquote>
+
+          <p>On extension mapped applications, the following URL is your
+          man.</p>
+
+          <blockquote>
+            <code>http://&lt;HOST&gt;[:&lt;PORT&gt;]/&lt;CONTEXT_ROOT&gt;/restart.&lt;FACES_SERVLET_MAPPING&gt;?password=adminadmin</code>
+          </blockquote>
+
+          <p>With the obvious substitutions, of course, and the password
+          being &quot;adminadmin&quot; by default.  You can change the restart
+          password with a <code>&lt;context-param&gt;</code>.</p>
+
+          <p>For example, with the Cardemo, this command uses wget to
+          restart the application via JMX.</p>
+
+          <blockquote>
+wget --spider http://localhost:8080/jsf-ajax-cardemo/faces/restart?password=adminadmin
+          </blockquote>
+
+
+          </li>
+
+	</ol>
+
+       <p>Upon receipt of a request with this URL, the
+       <code>PhaseListener</code> will use JMX to stop and restart the
+       application.  This takes a fraction of the time that a full
+       redeploy takes, yet all of the java classes in your app, as well
+       as all of the config files, are re-loaded. </p>
+
+<dl>
+<dt>Note, due to a bug in glassfish, the web.xml is not re-loaded when
+this JMX method is used.  A fix for this bug is in progress.
+</dt>
+</dl>
+
+       </div>
+
+       <a name="Reference"></a><div class="section"><h3>Reference</h3>
+
+         <p>The <code>JMXPhaseListener</code> in
+         <code>jsf-extensions-dev-time</code> supports the following
+         options, specified as <code>&lt;context-param&gt;</code>
+         elements in the web.xml.  All of these parameters are optional
+         and have sensible defaults.</p>
+
+<dl>
+
+<dt>com.sun.faces.RESTART_PASSWORD
+</dt>
+
+<dd><p>The password that must be given as the value of the
+<code>password</code> URL query parameter in the restart URL.  If not
+specified the value of &quot;adminadmin&quot; (without the quotes) is assumed.</p>
+</dd>
+
+<dt>com.sun.faces.ADMIN_PASSWORD
+</dt>
+
+<dd><p>The JMX password.  In most cases, this is equal to the admin
+password.  If not specified, the value of &quot;adminadmin&quot; (without the
+quotes) is used.</p>
+</dd>
+
+<dt>com.sun.faces.ADMIN_PORT
+</dt>
+
+<dd><p>The port on which the JMX server is listening.  If not sprcified,
+the value of 4848 is used.</p>
+</dd>
+
+</dl>
+
+       </div>
+
+
+    </div>
+
+
+
+  
+
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

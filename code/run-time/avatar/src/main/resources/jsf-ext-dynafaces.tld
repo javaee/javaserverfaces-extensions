@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--  
+ $Id: jsf-extensions.tld,v 1.4 2005/12/15 00:00:54 edburns Exp $ -->
+
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+
+
+  <description>
+    Tags for components in the jsf-extensions library
+  </description>
+
+  <tlib-version>0.03</tlib-version>
+  <short-name>jsfExt</short-name>
+  <uri>http://java.sun.com/jsf/extensions/dynafaces</uri>
+
+  <listener>
+    <listener-class>com.sun.faces.extensions.avatar.event.DynaFacesContextListener</listener-class>
+  </listener>
+
+  <tag>
+    <description>
+       <![CDATA[<p>Convenience component for rendering all the scripts
+       necessary for using the jsf-extensions ajax feature.  Place this
+       inside &lt;f:view&gt; yet before any usages of the AJAX
+       JavaScript objects.  Subsequent occurrences of this tag in the
+       page will produce no output.</p>]]>
+    </description>
+            
+    <name>scripts</name>
+    <tag-class>com.sun.faces.extensions.avatar.taglib.ScriptsTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>JSF Component Id</p>
+
+          ]]>
+
+        </description>
+      <name>id</name>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <description>
+       <![CDATA[<p>This is essentially a smart div tag that enables the
+       easy ajaxification of a portion of the page.  When using this
+       tag, any elements within the zone are updated via AJAX.  If using
+       multiple zones on a single page, all of them are updated for each
+       AJAX request.  The default behavior of this component is to
+       AJAXify every input component within the zone, but the set of
+       components within the zone that should be AJAXified can be
+       customized with the <code>inspectElement</code> attribute.</p>]]>
+    </description>
+    <name>ajaxZone</name>
+    <tag-class>com.sun.faces.extensions.avatar.taglib.AjaxZoneTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>JSF Component Id for this zone.</p>
+
+          ]]>
+
+        </description>
+      <name>id</name>
+    </attribute>
+        <attribute>
+            <name>binding</name>
+            <required>false</required>
+            <deferred-value>
+                <type>com.sun.faces.extensions.avatar.components.AjaxZone</type>
+            </deferred-value>
+            <description>
+                A ValueExpression that resolves to the UIComponent that corresponds
+                to this tag. This binding allows the Java bean that contains the UIComponent 
+                to manipulate the UIComponent, its properties, and its children.
+            </description>
+        </attribute>
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>Convey CSS style information to the renderer</p>
+
+          ]]>
+
+        </description>
+        <name>style</name>
+        <required>false</required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>Convey CSS style information to the renderer</p>
+
+          ]]>
+
+        </description>
+        <name>styleClass</name>
+        <required>false</required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute is a <code>MethodExpression</code> to
+          invoke when the request processing lifecycle in which this zone
+          is being processed encounters its invokeApplication phase.</p>
+
+          ]]>
+
+        </description>
+        <name>action</name>
+        <required>false</required>
+        <deferred-method>
+          <method-signature>
+            java.lang.Object action()
+          </method-signature>
+        </deferred-method>
+    </attribute>
+    <attribute>
+        <description>
+            <![CDATA[<p>This optional attribute is a flag indicating
+            that, if this component is activated by the user,
+            notifications should be delivered to interested listeners
+            and actions immediately (that is, during Apply Request
+            Values phase) rather than waiting until Invoke Application
+            phase.</p>]]>
+        </description>
+        <name>
+            immediate
+        </name>
+        <required>
+            false
+        </required>
+        <deferred-value>
+            <type>
+                boolean
+            </type>
+        </deferred-value>
+    </attribute>
+    
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute identifies a function that tells the 
+          system which kinds of elements within this zone to instrument with 
+          AJAX behavior.  The function must conform to the following signature:
+          </p>
+          
+          
+<pre><code>
+function inspectElement(element);
+</code></pre>
+
+         <p>This optional argument is the name of a function that must
+         return <code>true</code> to indicate that the element should be
+         instrumented for AJAX behavior.  If not specified, the default
+         <code>inspectElement</code> function will return
+         <code>true</code> for every child of this zone that is an HTML
+         <code>input</code>, <code>button</code>, or <code>option</code>
+         tag.  Example:</p>
+
+<pre><code>
+&lt;jsfExt:ajaxZone 
+&nbsp;&nbsp;&nbsp;inspectElement="inspectElement" <br /> 
+&nbsp;&nbsp;&nbsp;collectPostData="replaceOnMouseDown"&gt;<br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &lt;d:scroller&gt;<br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &lt;!-- nested components  --&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &lt;/d:scroller&gt;<br /> 
+&lt;/jsfExt:ajaxZone&gt;<br /> 
+
+&lt;script type="text/JavaScript"&gt;<br /> 
+&lt;!--<br /> 
+function inspectElement(element) {<br />
+&nbsp;&nbsp;var result = false;<br />
+&nbsp;&nbsp;if (null != element) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;var tagName = element.nodeName;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if (null != tagName) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (-1 != tagName.toLowerCase().substring("input")) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = true;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;return result;<br />
+}<br />
+--&gt;<br /> 
+&lt;/script&gt;<br /> 
+
+</code></pre>
+
+          ]]>
+
+        </description>
+        <name>inspectElement</name>
+        <required>false</required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute indicates what kind of JavaScript
+          event to intercept with the function named as the value of the
+          <code>collectPostData</code> attribute.  If not specified, the
+          "onclick" JavaScript event is intercepted.  For example:
+          </p>
+
+<pre><code>
+&lt;jsfExt:ajaxZone eventType="onmousedown" <br /> 
+&nbsp;&nbsp;&nbsp;collectPostData="replaceOnMouseDown"&gt;<br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &lt;d:scroller&gt;<br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &lt;!-- nested components  --&gt;<br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &lt;/d:scroller&gt;<br /> 
+&lt;/jsfExt:ajaxZone&gt;
+</code></pre>
+          ]]>
+
+        </description>
+        <name>eventType</name>
+        <required>false</required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute names a function to be called when
+          the JavaScript event specified by the value of the
+          <code>eventType</code> occurs.  This callback is the
+          application's opportunity to contribute name=value pairs that
+          will be sent with the AJAX request.  If no
+          <code>collectPostData</code> attribute is specified, the
+          following name=value pairs are sent with the AJAX request.</p>
+
+          <ul>
+
+            <li><p>The name=value pair of any input field within the
+            zone.</p></li>
+
+	  <li><p>For any radio button or menu, the name=value pair of
+	  the currently selected choice.</p></li>
+
+	  <li><p>If the activated component that resulted in this
+	  callback being called is a button, the name=value pair for
+	  that button only.  Any other buttons within the zone do not
+	  have their name=value pairs contributed to the AJAX
+	  request.</p></li>
+
+          </ul>
+
+          <p>
+          If the application desires a different set of name=value pairs
+          to be added to the AJAX request, they can use this attribute
+          to name a function that must conform to the following
+          signature:
+          </p>
+
+<pre><code>
+function handler(ajaxZone, element, outArray);
+</code></pre>
+
+          <p><code>ajaxZone</code> is the ajaxZone element that is the
+          parent of the element that is receiving the event.
+          <code>element</code> is the element receiving the event within
+          the zone.  <code>outArray</code> is a pre-allocated array
+          whose contents will be submitted with the ajax request to the
+          server in response to this zone receiving the JavaScript event
+          specified in the <code>eventType</code> attribute.  Each
+          element of the array must be in the form
+          <code>name=value</code>.  For example, the following
+          <code>ajaxZone</code> tag will submit only the name=value pair
+          of the element with id "<code>toSend</code>".</p>
+
+<pre><code>
+&lt;h:form prependId="false"&gt;<br />
+&nbsp;&nbsp;&lt;jsfExt:ajaxZone collectPostData="handler"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:selectBooleanCheckbox id="toSend"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valueChangeListener="#{user.adminCheckboxChecked}" /&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value="#{user.isAdministrator}" /&gt;<br />
+&nbsp;&nbsp;&lt;/jsfExt:ajaxZone&gt;<br />
+&lt;/h:form&gt;
+<br /> 
+&lt;script type="text/JavaScript"&gt;<br /> 
+&lt;!--<br /> 
+function handler(ajaxZone, element, outArray) {<br /> 
+<br /> 
+&nbsp;&nbsp;var name = null, value = null;<br /> 
+<br /> 
+&nbsp;&nbsp;var toSend = Document.getElementById('toSend');<br />
+&nbsp;&nbsp;var elementNodeName = toSend.nodeName.toLowerCase();<br />
+&nbsp;&nbsp;var elementType = toSend.type;<br />
+&nbsp;&nbsp;name = DynaFacesZones.getParamNameFromElement(toSend,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elementNodeName, <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elementType);<br />
+&nbsp;&nbsp;value = DynaFacesZones.getParamValueFromElement(toSend,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elementNodeName, <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elementType);<br />
+&nbsp;&nbsp;outArray.push(name+'='+value);
+}<br /> 
+--&gt;<br /> 
+&lt;/script&gt;<br /> 
+</code></pre>
+
+<p>This will cause an AJAX transaction to be initiated when the user
+clicks the checkbox.  Any other zones in the page will be update via
+AJAX, and they can take advantage of the resultant
+<code>ValueChangeEvent</code>.  This sort of thing is handy for a
+"show/hide" feature in the UI.</p>
+
+]]>
+
+</description>
+<name>collectPostData</name>
+<required>false</required>
+<deferred-value>
+	    <type>java.lang.String</type>
+</deferred-value>
+</attribute>
+
+      <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute names a function to be called after
+          the new content from the server for this zone has been
+          installed into the view.  The function must conform to
+          the following signature:</p>
+
+<pre><code>
+function postReplace(ajaxZone, innerHTML, [closure]);
+</code></pre>
+
+<p>This function is called after the markup replacement for each
+component that needs to be re-rendered with data from this ajax
+response.  The optional argument <code>closure</code> is whatever was
+passed as the <code>closure</code> option to the
+<code>Faces.Event</code> or <code>Faces.DeferredEvent</code> that initiated
+the ajax request for this response.</p>
+
+]]>
+
+</description>
+<name>postReplace</name>
+<required>false</required>
+<deferred-value>
+	    <type>java.lang.String</type>
+</deferred-value>
+</attribute>
+
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute is or names a JavaScript function
+          that will be called when the system needs to replace a chunk
+          of markup in the view based on the return from the server.
+          The function must conform to the following signature.
+          </p>
+
+<pre><code>
+function replaceElement(id, content, [closure]);
+</code></pre>
+
+          <p>The function is expected to take the content of the
+          <code>content</code> argument and replace the DOM element
+          referenced by the <code>id</code> argument.  The function is
+          expected to invoke any scripts that may be present in
+          <code>content</code>.  The optional argument
+          <code>closure</code> is whatever was passed as the
+          <code>closure</code> option to the <code>Faces.Event</code> or
+          <code>Faces.DeferredEvent</code> that initiated the ajax request for
+          this response.</p>
+
+          ]]>
+
+        </description>
+        <name>replaceElement</name>
+        <required>false</required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+
+    <attribute>
+        <description>
+          <![CDATA[
+
+          <p>This optional attribute names a function to be called to
+          provide a closure argument that will be passed to the ajax
+          request and made available to the ajax response in the
+          <code>replaceElement</code> or <code>postReplace </code>
+          functions.  The function must conform to the following
+          signature.
+          </p>
+
+<pre><code>
+function getClosure(ajaxZone, element);
+</code></pre>
+
+          <p>The function must return a JavaScript Object.</p>
+
+          ]]>
+
+        </description>
+        <name>getCallbackData</name>
+        <required>false</required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+
+    <attribute>
+        <description>
+            <![CDATA[Flag indicating whether or not this component should be rendered
+            (during Render Response Phase), or processed on any subsequent
+            form submit.  The default value for this property is true.]]>
+        </description>
+        <name>
+            rendered
+        </name>
+        <required>
+            false
+        </required>
+        <deferred-value>
+            <type>
+                boolean
+            </type>
+        </deferred-value>
+    </attribute>
+    
+    <attribute>
+        <description>
+            <![CDATA[Comma separated list of client ids for which the
+            "execute" portion of the request processing lifecycle will
+            be run when an Ajax transaction originates from within this
+            zone.  If not specified, the "execute" portion of the
+            request processing lifecycle will be run on this zone
+            only.]]>
+        </description>
+        <name>
+            execute
+        </name>
+        <required>
+            false
+        </required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+
+    <attribute>
+        <description>
+            <![CDATA[Comma separated list of client ids for which the
+            "render" portion of the request processing lifecycle will be
+            run when an Ajax transaction originates from within this
+            zone.  If not specified, the "render" portion of the request
+            processing lifecycle will be run on this zone only.]]>
+        </description>
+        <name>
+            render
+        </name>
+        <required>
+            false
+        </required>
+        <deferred-value>
+	    <type>java.lang.String</type>
+        </deferred-value>
+    </attribute>
+    
+</tag>
+
+</taglib>

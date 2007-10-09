@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>JavaServer Faces Technology Extensions - 
+    Getting Started with Dynamic Faces</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://java.sun.com/" id="bannerLeft">
+    
+                                            <img src="images/corpweb-power.gif" alt="" />
+    
+            </a>
+                        <a href="http://java.sun.com/javaee/downloads/" id="bannerRight">
+    
+                                            <img src="images/javaeesdkdownload.gif" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+        Last Published: 2006 12 05
+                      </div>
+            <div class="xright">      <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
+          |
+          <a href="http://java.sun.com/javaee/javaserverfaces/">JSF</a>
+          |
+          <a href="http://javaserverfaces.dev.java.net/">Sun JSF</a>
+          |
+          <a href="http://java.sun.com/javaee/downloads/index.jsp">Java EE</a>
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>JSF Extensions</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="index.html">home</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq">FAQ</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectMembershipRequest">Join Project</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/WatchProject">Watch Project</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectDocumentList">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectIssues">Issue Tracking</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/source/browse/jsf-extensions/">Version Control - SCM</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq#How_do_I_Build_It_">Building</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://wiki.java.net/bin/view/Projects/Jsf-extensions">Wiki</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectNewsList">Announcements</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://jsf-extensions.dev.java.net/servlets/ProjectMailingListList">Mailing Lists</a>
+        </li>
+              
+    <li class="none">
+              <a href="slides.html">Slides and Screencasts</a>
+        </li>
+          </ul>
+          <h5>Runtime Features</h5>
+        <ul>
+              
+          
+              
+      
+            
+            
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="features-ajax.html">Ajax</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="features-ajax.html">Overview</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Getting Started</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="reference-ajax.html">Reference</a>
+        </li>
+                  
+    <li class="none">
+              <a href="ajax/apidocs/index.html">JavaDoc</a>
+        </li>
+                  
+    <li class="none">
+              <a href="ajax/tlddocs/index.html">TagLibraryDoc</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="features-flash.html">Flash</a>
+        </li>
+              
+    <li class="none">
+              <a href="features-zdt.html">Zero Deployment Time</a>
+        </li>
+          </ul>
+          <h5>Test Time Features</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="features-test.html">Test</a>
+        </li>
+          </ul>
+          <h5>Project Documentation</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="project-info.html">Project Information</a>
+              </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        
+
+  
+
+  
+
+<p>This guide takes you through the steps to get started using
+JavaServer(tm) Faces Dynamic Updating with JSP pages (Dynamic
+Faces). You'll learn how to use Dynamic Faces to add Ajax functionality
+to an existing JavaServer Faces application, thereby discovering how
+Dynamic Faces makes it easy to &quot;Ajaxify&quot; the JavaServer Faces
+components you already use.
+</p>
+
+  <a name="Prerequisites"></a><div class="section"><h2>Prerequisites</h2>
+
+<p>Before you get started using Dynamic Faces, you should have the
+following:</p>
+
+    <ul><li>Basic knowledge of JavaServer Faces technology and all of the
+	technologies it relies on, including JSP pages, Servlets, and the Java EE platform.
+    To get up to speed on JavaServer Faces technology, refer to chapters 9 through 13 of the 
+	<a href="http://java.sun.com/javaee/5/docs/tutorial/doc/index.html">Java EE
+	Tutorial</a>, which is free to download or read online.
+	If you prefer a hardcopy book on the subject, try 
+     <a href="http://purl.oclc.org/NET/jsfbook/">JavaServer Faces: The
+    Complete Reference</a>, which is available in book stores now.</li>
+    <li>Knowledge of Maven 2, if you want to use the automatic
+    build infrastructure.  <a href="http://maven.apache.org/">Consult 
+    the maven site</a> for more information.</li>
+    </ul>
+
+    </div>
+
+    <a name="Checklist"></a><div class="section"><h2>Checklist</h2>
+
+<p>To create your first Dynamic Faces application, you'll need to do the
+following:</p>
+
+    <ol type="1">
+
+	  <li>Download and install a container that runs JavaServer Faces technology, version 1.2, such as the
+        <a href="http://java.sun.com/javaee/downloads/">Java EE SDK</a>.
+	 </li>
+
+	  <li>Do one of two things:
+		<ul>
+			<li>Download and unpack a binary distribution of Dynamic Faces, which you can get
+	 by clicking the &quot;Download&quot; link on the <a href="/">Dynamic Faces main page</a>.
+         </li>
+		<li>Use Subversion and Maven to check out and build Dynamic Faces from source.  You 
+	can find instructions for checking out the code <a href="https://jsf-extensions.dev.java.net/servlets/ProjectSource">here</a>. 
+      To build the code after you've checked it out, see the FAQ question, 
+      <a href="http://wiki.java.net/bin/view/Projects/JsfExtensionsFaq#How_do_I_Build_It_">How do I build it?</a>.  
+      Note that section <a href="#Adding_Dynamic_Faces_to_your_JavaServer_Faces_Application">Adding Dynamic Faces to your JavaServer Faces Application</a> 
+      assumes that you are checking out and building Dynamic Faces from source.</li>
+		</ul>
+
+
+<p>Take special care of the mvn proxy instructions in the FAQ.  They
+come into play whenever you use the mvn command, as you do in several
+places below.  In general, when we say, &quot;type mvn&quot; in this document, we
+mean &quot;type maven with the appropriate proxy settings for your
+environment&quot;.</p>
+
+</li>
+    </ol>
+
+   </div>
+
+    <a name="Developing With the Provided Blank Application"></a><div class="section"><h2>Developing With the Provided Blank Application</h2>
+
+<p>If you are not adding Dynamic Faces capabilities to an existing
+JavaServer Faces application but are instead creating a new application,
+you'll find it's easier to start with the blank application provided both in the
+binary distribution and the source repository because it already has all
+the configurations set. </p>
+
+Suppose that your Dynamic Faces distribution or repository is located 
+in the &lt;DIST&gt; directory.  To start using the blank application, follow these directions:
+
+	<ol type="1">
+          
+	  <li>Do one of the following to start coding with the blank application:
+		<ul>
+			<li>If you are using Maven, go to the 
+		<code>&lt;DIST&gt;/samples/blank-jsp</code> directory.
+	  This is a Maven module pre-configured to build your app</li>
+			<li>If you are using the binary distribution,
+	  unpack the pre-built WAR file, called
+	  <code>&lt;DIST&gt;/samples/blank-jsp/target/dynafaces-jsp-blank.war</code>,
+	  into a new directory and do your editing in place. </li>
+		</ul></li>
+	  <li>Build the application by doing one of the following:
+		<ul>
+			<li>If you are using Maven, build the example by running the following command
+		inside the <code>blank-jsp</code> directory, assuming you have added Maven to your path:
+			<pre>
+			mvn
+			</pre>
+		     </li>
+	  		<li>If you are using the binary distribution, use the <code>jar</code> command to build the 
+		directory into a WAR file.</li>
+		</ul></li>
+	<li>Deploy the WAR file that you built to your server.</li>
+	</ol>
+	  Keep in mind that the rest of this guide assumes that you're using Maven.
+
+    </div>
+
+    <a name="Application Configuration"></a><div class="section"><h2>Application Configuration</h2>
+
+<p>Before you can get started using Dynamic Faces, you need to add a
+couple simple configurations to your application.  If you are using the
+blank application, as described in the previous section, you don't need
+to do any configuration.</p>
+
+<p>In this section, you'll learn how to add the required configurations
+if you are not using the blank application.  For the purposes of this
+guide, suppose your Dynamic Faces distribution or repository is located
+in the &lt;DIST&gt; directory and follow these directions:</p>
+
+	<ol type="1">
+
+	  <li>set up the <code>web.xml</code> file.
+
+In Maven, the <code>web.xml</code> file is located at
+<code>src/main/webapp/WEB-INF/web.xml</code> by default.  That means
+it's located at
+<code>&lt;DIST&gt;/samples/blank-jsp/src/main/webapp/WEB-INF/web.xml</code>
+on your disk.  Open the file and look at the
+<code>&lt;servlet&gt;</code> XML element:
+
+<pre><code>
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+          &lt;param-name&gt;javax.faces.LIFECYCLE_ID&lt;/param-name&gt;
+          &lt;param-value&gt;com.sun.faces.lifecycle.PARTIAL&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+
+</code></pre>
+
+This is the only special configuration you need in your <code>web.xml</code> to
+use Dynamic Faces.  No filters, no extra servlets, no mess.
+
+         </p></li>
+
+	  <li>Bundle the dependent JAR files in the <code>WEB-INF/lib</code> directory of your application.
+
+
+Go to the <code>&lt;DIST&gt;/samples/blank-jsp/target/</code>directory
+and run the following command to see the JAR files required by Dynamic
+Faces.  The blank-jsp application already includes them:
+
+<pre><code>jar -tf dynafaces-jsp-blank.war</code></pre>
+
+<p>In the output from the command, you'll see the following JAR files
+within <code>WEB-INF/lib</code>:</p>
+
+<pre><code>
+WEB-INF/lib/commons-logging-1.0.4.jar
+WEB-INF/lib/jsf-extensions-common-0.1-SNAPSHOT.jar
+WEB-INF/lib/jsf-extensions-dynamic-faces-0.1-SNAPSHOT.jar
+WEB-INF/lib/shale-remoting-1.0.3-SNAPSHOT.jar
+</code></pre>
+
+<p>Commons-logging is required by shale-remoting, which Dynamic Faces
+uses for loading JavaScript resources.</p>
+
+         </p></li>
+
+	</ol>
+
+
+<p>That's it.  You're all set up and ready to begin coding!</p>
+
+    </div>
+
+    <a name="Adding Dynamic Faces to your JavaServer Faces Application"></a><div class="section"><h2>Adding Dynamic Faces to your JavaServer Faces Application</h2>
+
+<p> This section describes what you need to add to your JavaServer Faces
+application to get basic Ajax support from Dynamic Faces.  Instead of
+explaining how to build an application from scratch using the blank
+application, this section uses the existing Dynamic Faces version of the
+Guess Number application available in the source repository.</p>
+
+
+<p>This application is based on the Guess Number application that is
+available with the <a href="https://javaserverfaces.dev.java.net/">JavaServer Faces reference
+implementation</a>.  It picks a random number between 0 and 10 and asks
+you to guess the number by entering it into the text field and clicking
+the button.  The application will also suggest if you should guess a
+higher or lower number based on your previous guess.  </p>
+
+
+<p>The Dynamic Faces source repository that you build with Maven already
+includes a version of the Guess Number application with Dynamic Faces
+added to it, located in the
+<code>&lt;DIST&gt;/code/run-time/samples/dynafaces-getting-started/</code>
+directory.  To build the application do the following:</p>
+
+<ol type="1">
+<li>Go to &lt;DIST&gt;/code/run-time/samples/dynafaces-getting-started</li>
+<li>Run the following command:
+<pre>
+mvn
+</pre>
+</li>
+</ol>
+
+<p>When you run the command, the build process downloads the version of the
+Guess Number application from the JavaServer Faces reference
+implementation and overlays it onto the Dynamic Faces version of the
+application in the Dynamic Faces repository.</p>
+
+
+<p>For adding basic Dynamic Faces functionality to your existing
+JavaServer Faces application, you need to do three things:</p>
+
+<ol type="1">
+<li>Declare the Dynamic Faces tag library in any JSP pages that use Dynamic Faces:
+<pre>
+&lt;%@ taglib prefux=&quot;jsfExt&quot; uri=&quot;http://java.sun.com/jsf/extensions/dynafaces&quot; %&gt;
+</pre>
+</li>
+<li>Inside the <code>f:view</code> tag, add a Dynamic Faces <code>scripts</code> tag to make all the 
+Dynamic Faces JavaScript libraries available to the page:
+<pre>
+&lt;jsfExt:scripts /&gt;
+</pre></li>
+<li>
+Perform the required configuration steps described in the <a href="#Application Configuration">Application Configuration</a> section.
+</li>
+</ol>
+
+<p>Once you've finished the preceding tasks, you're ready to add any
+Dynamic Faces functionality to your application.  The rest of this section
+describes how the Guess Number application uses Dynamic Faces.</p>
+
+<p>The <code>greeting.jsp</code> page of the Guess Number application uses
+Dynamic Faces to Ajax-enable the submission of the user's guess.
+Try running the live demo of <a href="http://sunapp1.whardy.com:8090/jsf-dynafaces-getting-started/">Guess
+Number</a> and you'll see that the additional Ajax functionality speeds
+up the submission of the form.  Notice that the &quot;spinner&quot; in
+the corner of the browser doesn't spin waiting for the page to refresh.
+In fact, the server only re-renders the components that you tell it to
+re-render.</p>
+
+<p>The Guess Number application achieves this effect using the
+<code>installDeferredAjaxTransaction</code> function supplied by Dynamic
+Faces:</p>
+
+<pre>
+&lt;h:panelGroup id=&quot;refresh&quot;&gt;
+...
+&lt;script type=&quot;text/javascript&quot;&gt;
+        DynaFaces.installDeferredAjaxTransaction($('submit'), 'click', 
+            { render: 'refresh' });
+      &lt;/script&gt;
+&lt;/h:panelGroup&gt;
+</pre>
+
+<p>As you can see, this script is placed directly inside the <code>panelGroup tag</code>, after all of the other components
+in the page. </p>
+
+<p>
+The <code>installDeferredAjaxTransaction</code> function queues a
+deferred Ajax transaction.  It takes an action, an event, and a set of
+options. The action refers to which action will cause the transaction to
+be queued. The event refers to what user-initiated event caused the
+action to occur. The set of options include a list of what components
+should be rendered and when they should be rendered. </p>
+
+<p>
+In this case, the action is <code>$('submit')</code>, which corresponds to the submit button. This action is caused by
+a click event on the submit button. The options list includes one option that says
+that the refresh component should be re-rendered during the render phase of the lifecycle.  As shown on the
+greeting.jsp page, the refresh component is the panelGroup component that encompasses all of the other
+components on the page.</p>
+
+<p>
+That's all there is to it.  Dynamic Faces offers other techniques for
+adding Ajax to your application, such as the Ajax Zones, as demonstrated
+by the Ajaxified <a href="http://sunapp1.whardy.com:8090/jsf-ajax-cardemo2/description/index.html">Cardemo
+application</a> and integration with jMaki widgets, as illustrated by
+the <a href="http://sunapp1.whardy.com:8090/jsf-jmaki/home.jsf">scroller
+component demo</a>.  You can find links to live demos of these and other
+applications on the <a href="https://jsf-extensions.dev.java.net">Dynamic Faces site</a>.  See
+the <a href="https://jsf-extensions.dev.java.net/nonav/mvn/slides.html">screencasts</a>
+for a demonstration of everything Dynamic Faces can do for your
+applications.</p>
+
+    </div>
+
+  
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006
+    
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

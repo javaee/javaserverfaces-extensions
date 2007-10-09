@@ -1,0 +1,7 @@
+com.sun.faces.extensions.avatar.application
+com.sun.faces.extensions.avatar.components
+com.sun.faces.extensions.avatar.event
+com.sun.faces.extensions.avatar.lifecycle
+com.sun.faces.extensions.avatar.renderkit
+com.sun.faces.extensions.avatar.taglib
+com.sun.faces.extensions.common.util
