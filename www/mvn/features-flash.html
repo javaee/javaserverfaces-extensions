@@ -216,10 +216,168 @@
 
   
 
-    <p>PENDING(edburns): flesh out documentation</p>    
+  <p>This feature is the flash concept taken from <a target="_"
+  href="http://api.rubyonrails.com/classes/ActionController/Flash.html">Ruby
+  On Rails</a>.</p>
+
+  <p>In JSF, the flash is exposed naturally via the new <a
+  href="http://java.sun.com/products/jsp/reference/techart/unifiedEL.html">Unified
+  Expression Language in Java EE 5</a>.  It is implemented via a custom
+  <code>ELResolver</code> that introduces a new implicit object called
+  "flash".</p>
+
+  <p>Using the flash is simple, and semantically identical to the way it
+  works in Rails.  It's a Map.  Stuff you put in the Map will be
+  accessible on the "next" view shown to user.  The Map will be cleared
+  when the user has been shown the "next" view.</p>
+
+
+
+<!-- BEGIN WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+<tr valign="top"><td>
+
+<!-- BEGIN MAIN COLUMN -->
 
   
+<form id="form1" name="form1" method="post" action="/jsf-flash/home-flash.jsf;jsessionid=33bc22d2edbd3fd3d93a811c5e2f" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="form1" value="form1" />
+<table border="1" width="600">
+<tbody>
+<tr>
+<td>
+      
+    Put <code>fooValue</code> in the flash under key <code>foo</code>
+    using <code>c:set</code>.  Note that things stored in the flash
+    during <b>this</b> request are only retrievable on the <b>next</b>
+    request.  If you want to store something on this request and see it
+    on this one as well, use either <code>&#35;{flash.now.foo}</code> or
+    <code>&#35;{requestScope.foo}</code>.  The former is simply an alias
+    for the latter.
 
+    
+
+    </td>
+<td>
+      &lt;c:set var="&#35;{flash.foo}" value="fooValue" /&gt;
+    </td>
+</tr>
+
+</tbody>
+</table>  
+
+<p>Going to the next page, we have:</p>
+
+<table border="1">
+<tbody>
+<tr>
+<td>
+
+    Value of the previous request's foo: <code>&lt;h:outputText value="#{flash.foo}" /&gt;
+</code>
+
+    </td>
+<td>fooValue</td>
+</tr>
+<tr>
+<td>
+
+    Put <code>barValue</code> in the flash.now under key
+    <code>bar</code>.
+
+    
+
+    </td>
+<td>
+      &lt;c:set var="#{flash.now.bar}" value="barValue" /&gt;
+    </td>
+</tr>
+<tr>
+<td>
+
+    Value of <code>#{flash.now.bar}</code>, should be <code>barValue</code>.
+
+    </td>
+<td>barValue</td>
+</tr>
+</tbody>
+</table>
+
+<p>Going to the next page, we have:</p>
+
+<table border="1">
+<tbody>
+<tr>
+<td>
+
+    Value of the previous request's foo: <code>&lt;h:outputText value="#{flash.foo}" /&gt;
+</code>
+
+    </td>
+<td></td>
+</tr>
+<tr>
+<td>
+
+    Value of the this request's bar.  Should be null: <code>&lt;h:outputText value="#{flash.bar}" /&gt;</code>
+
+    </td>
+<td></td>
+</tr>
+<tr>
+<td>
+
+    Put <code>banzai</code> in the flash.now under key
+    <code>buckaroo</code>.
+
+    
+
+    </td>
+<td>
+      &lt;c:set var="#{flash.now.buckaroo}" value="banzai" /&gt;
+    </td>
+</tr>
+<tr>
+<td>
+
+    Value of <code>#{flash.now.buckaroo}</code>, should be
+    <code>banzai</code>.
+
+    </td>
+<td>banzai</td>
+</tr>
+<tr>
+<td>
+
+    Promote buckaroo to stick around for the next request.
+
+    
+
+    </td>
+<td>
+      &lt;c:set var="#{flash.now.buckaroo}" 
+                     value="#{flash.keep.buckaroo}" /&gt;
+    </td>
+</tr>
+</tbody>
+</table>
+
+<p>Going another page further, we have:</p>
+
+<table border="1">
+<tbody>
+<tr>
+<td>
+
+    Show that buckaroo is still here.
+
+<code>&lt;h:outputText value="#{flash.buckaroo}" /&gt;</code>
+
+    </td>
+<td>banzai</td>
+</tr>
+</tbody>
+</table>
 
       </div>
     </div>
